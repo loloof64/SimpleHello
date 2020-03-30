@@ -20,3 +20,15 @@ target_link_libraries(
     ${PROJECT_NAME}
     PUBLIC ${wxWidgets_LIBRARIES}
 )
+
+if(WIN32)
+    set(CPACK_GENERATOR "NSIS;ZIP")
+else()
+    set(CPACK_GENERATOR "TGZ;RPM;DEB")
+endif()
+
+SET(CPACK_DEBIAN_PACKAGE_MAINTAINER "Laurent Bernabe")
+
+SET(CPACK_RPM_PACKAGE_VENDOR "Laurent Bernabe")
+
+INCLUDE(CPack)
